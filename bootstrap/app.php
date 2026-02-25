@@ -12,10 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->api(prepend: [
-            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-        ]);
-        // Removed EnsureEmailIsVerified as it's not needed right now
+        // Removed stateful API middleware - using pure token auth
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
